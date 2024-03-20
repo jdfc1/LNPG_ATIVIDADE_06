@@ -3,92 +3,61 @@
 #include <string.h> // para usar string
 #include <locale.h> // permitir strings characteres
 
-int main () {
+int main() {
+    int n;
+    scanf("%d", &n);
 
-    int nPassageiros;
-    printf("digite o número de passageiros: ");
-    scanf("%d", &nPassageiros);
 
-    int valor=0;
-    char rg[8];
-    int naoPossuiRg=0;
-
-    for (int i = 1; i <= nPassageiros; i++) {
-        printf("passageiro número %d possui RG? 1 para sim, 2 para não:", i);
-        scanf("%d",&valor);
-        if (valor == 1) {
-            printf("digite número do RG do passageiro %d ",i);
-            fgets(rg, sizeof(rg), stdin);
-            int tamanhoRG = strlen(rg);
-
-            if(tamanhoRG-2 >= 7){
-                printf("6 caracteres. RG Correto");
-            }
-            else {
-                printf("maior que 6 caracteres. RG Incorreto\n ");
-            }
-
-        }else{
-            naoPossuiRg++;
+    for (int i = 0; i < n; i++) {    
+        char rg[10], passagem[10], dataNascimentoRG[11], dataNascimentoPassagem[11], assento[4];
+        // Entrada de dados
+        scanf("%s %s %s %s %s", rg, dataNascimentoRG, passagem, dataNascimentoPassagem, assento);
+        
+        // Verifica se o passageiro possui RG
+        if (strcmp(rg, "Nao") == 0) {
+            printf("a saida e nessa direcao\n");
+            continue;
         }
-
+        
+        // Verifica se o passageiro possui passagem
+        if (strcmp(passagem, "Nao") == 0) {
+            printf("a recepcao e nessa direcao\n");
+            continue;
+        }
+        
+        // Verifica se as datas de nascimento são iguais
+        if (strcmp(dataNascimentoRG, dataNascimentoPassagem) != 0) {
+            printf("190\n");
+            continue;
+        }
+        
+        // Caso todas as condições anteriores não se apliquem
+        printf("o seu assento e %s tenha um otimo dia\n", assento);
     }
     
-
-
-    printf("%d pessoas não possuem RG \n",naoPossuiRg);
-
-
-
-    // informações que eu tenho do usuário.
-    
-    /* 
-    int rg = 123456;
-    int rgDigitada; 
-    char dataNascimento[20] = {"01/01/2024"};
-    char dataNascimentoDigitada[20];
-
-    printf("digite a data de nascimento que vc encontrou no passaporte");
-    fgets(dataNascimentoDigitada, sizeof(dataNascimentoDigitada), stdin);
-    int tamanho = strlen(dataNascimentoDigitada);
-
-    if (dataNascimentoDigitada[tamanho - 1] == '\n') { // Remover o letra de nova linha do final da string
-        dataNascimentoDigitada[tamanho - 1] = '\0';    // nulo
-        tamanho--; // for 
-    }
-
-
-    printf("digite a RG para comparar");
-    scanf("%d",&rgDigitada);
-
-    if (rg == rgDigitada) {
-        printf("a RG é igual a do registro:\n ");
-    }else{
-        printf("a RG não confere registro:\n ");
-    }
-
-    int contGood; 
-
-    // saber se a data digitada é igual a data inicial
-    for (int i = 0; i < tamanho; i++){
-        if (dataNascimentoDigitada[i] != dataNascimento[i]) {
-            break;
-        }
-        else{
-            contGood++;
-        }
-
-    }
-
-    if (contGood >= 10) {
-        printf("Data Correta\n");
-    }
-    else {
-        printf("Data Incorreta\n");
-    } 
-    
-    */
-
-
-
+    return 0;
 }
+
+
+/* 
+Descrição
+você é um segurança com uma lista checagem, o seu trabalho é checar cada um do passageiros e ver se eles tem
+RG;
+Passagem
+Após isso você deve checar se as datas de nascimento no RG e na passagem são iguais, qual é o assento do passageiro e informa-lo qual é o seu assento
+se o passageiro não tiver um RG ele deve ser direcionado para a saída;
+se o passageiro não tiver uma passagem ele deve ser direcionado para a recepção do aeroporto;
+se a data de nascimento do RG e da Passagem não baterem você deve chamar a policia. 
+Formato de entrada
+um número inteiro positivo N, que representa a quantidade de passageiros;
+uma String com o valor "RG" ou "Nao possui" para indicar se a pessoa possui ou não RG;
+uma String no formato "DD/MM/AAAA" indicando a data de nascimento do RG;
+uma String com o valor "Passagem" ou "Nao possui" para indicar se a pessoa possui ou não Passagem;
+uma String no formato "DD/MM/AAAA" indicando a data de nascimento da Passagem;
+uma String no formato "A12" indicando a cadeira do passageiro.
+Formato de saída
+caso o passageiro não tenha RG a saída deve ser "a saída é nessa direção";
+caso o passageiro não tenha Passagem a saída deve ser "a recepção é nessa direção";
+caso as datas de nascimento não sejam iguais a saída deve ser "190";
+caso todos os anteriores não aconteção a saída deve ser "o seu assento é" seguido do assento do passageiro e depois " tenha um ótimo dia".
+ */
