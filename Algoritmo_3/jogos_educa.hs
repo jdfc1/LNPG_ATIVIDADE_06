@@ -9,6 +9,6 @@ main = do
         acimaVendas = if jogosVendidos >= 15 then valorTotalVendas * 0.08 else 0
         valorBonus = valorTotalVendas / 2
         valorMensalRecebido = valorBonus + acimaVendas
-    printf "R$ %.2f é o valor Total Arrecadado.\n" valorTotalVendas
-    printf "R$ %.2f é o valor Total em Bonus.\n" valorBonus
-    printf "R$ %.2f é o valor que Catarina recebeu no mês.\n" valorMensalRecebido
+    printf "R$ %.2f é o valor Total Arrecadado.\n" (valorTotalVendas :: Float)
+    printf "R$ %.2f é o valor Total em Bonus.\n" (valorBonus :: Float)
+    printf "R$ %.2f é o valor que Catarina recebeu no mês.\n" (valorMensalRecebido :: Float)

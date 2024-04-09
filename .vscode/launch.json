@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "ListaDeCompras",
+            "request": "launch",
+            "mainClass": "ListaDeCompras",
+            "projectName": "LNPG_ATIVIDADE_06_110f1415"
+        },
+        {
+            "type": "java",
+            "name": "ControleEstoque",
+            "request": "launch",
+            "mainClass": "ControleEstoque",
+            "projectName": "LNPG_ATIVIDADE_06_110f1415"
+        },
+        {
+            "type": "java",
             "name": "VendasCatarina",
             "request": "launch",
             "mainClass": "Algoritmo_3.VendasCatarina",
